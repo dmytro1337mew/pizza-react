@@ -1,0 +1,17 @@
+.App{
+    text-align: center;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    cursor: url(/src/components/1222.png), auto;
+}
+.app{
+    background-image: url(/src/components/123.png);
+    display:flex;
+    flex-direction: column;
+    background-color: lightgrey;
+    height: 100%;
+}

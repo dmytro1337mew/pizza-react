@@ -1,0 +1,7 @@
+.body{
+    margin-top: 25px;
+    margin-left: 215px;
+    margin-right: 215px;
+    display: flex;
+    flex-wrap: wrap;
+}
