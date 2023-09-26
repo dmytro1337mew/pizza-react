@@ -5,13 +5,14 @@ import Header from '../components/Header';
 import { decrementQuantity, incrementQuantity } from '../redux/CartSlice';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
+import Footer from '../components/Footer';
 function Cart() {
   const cart = useSelector((state) => state.cart.cart);
-  const dispatch=useDispatch();
-  const increaseQuantity=(item)=> {
+  const dispatch = useDispatch();
+  const increaseQuantity = (item) => {
     dispatch(incrementQuantity(item))
   }
-  const decreaseQuantity=(item)=>{
+  const decreaseQuantity = (item) => {
     dispatch(decrementQuantity(item))
   }
   return (
@@ -21,9 +22,9 @@ function Cart() {
         {/* left */}
         <div className='cartleft'>
           {cart.map((item, index) => (
-            <div 
-            key={index}
-            style={{ marginBottom: 20, display: "flex", flexDirection: "row", alignItems: "center", }}>
+            <div
+              key={index}
+              style={{ marginBottom: 20, display: "flex", flexDirection: "row", alignItems: "center", }}>
               <div className='cartimage'>
                 <img src={item.image} style={{ height: 60, width: 60, borderRadius: 5 }} />
               </div>
@@ -35,16 +36,16 @@ function Cart() {
               </div>
 
               <div className='carttotal' style={{ marginLeft: "auto" }}>
-                <h4>{item.price * item.quantity}</h4>
+                <h4 style={{ marginLeft: 18 }}>{item.price * item.quantity}</h4>
                 <div className='cartbuttons'>
-                  <div onClick={()=>increaseQuantity(item)}className='cartbutton'>
-                  <AddIcon/>
+                  <div onClick={() => decreaseQuantity(item)} className='cartbutton'>
+                    <RemoveIcon style={{ height: 15, width: 15, marginRight: 5 }} />
                   </div>
-                  <div className='cartbutton'>
-                  {item.quantity}
+                  <div style={{ fontWeight: 600, marginBottom: 5 }} className='cartbutton'>
+                    {item.quantity}
                   </div >
-                  <div onClick={()=> decreaseQuantity(item)} className='cartbutton'>
-                  <RemoveIcon/>
+                  <div onClick={() => increaseQuantity(item)} className='cartbutton'>
+                    <AddIcon style={{ height: 15, width: 15, marginLeft: 5 }} />
                   </div>
                 </div>
               </div>
@@ -56,6 +57,7 @@ function Cart() {
           <h3>right</h3>
         </div>
       </div>
+      {/* <Footer/> */}
     </>
   )
 }

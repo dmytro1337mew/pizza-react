@@ -20,6 +20,7 @@ border-radius:20px;
     margin-right: 100px;
 }
 .image{
+    cursor: url(/src/components/34.png), pointer;
 margin-left: 100px;
 }
 .clickpointer{
