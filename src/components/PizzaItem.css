@@ -1,50 +1,50 @@
 
 .PizzaItemText{
-font-size: 14px;
-font-weight: 500 ;
-text-align: left;
-margin-left: 25px;
-margin-bottom: 10px;
-}
-.PizzaItemDescription{
     font-size: 14px;
-    font-weight: 500;
-    color: gray;
+    font-weight: 500 ;
     text-align: left;
     margin-left: 25px;
-    margin-right: 25px;
-    margin-bottom: 50px;
-}
-
-.pizzaItemOuterContainer{
-    border-radius: 25px;
-    background-color: white;
-    padding: 8px;
-    text-align: center;
-    display: block;
-    justify-content: center;
-    align-items: center;
-    margin: auto;
-    width: 300px;
-    height: 380px;
-    margin: 20px;
-}
-.pizzaItemcontainer{
-    padding-top: 10px;
-}
-.PizzaItemButton{
-    cursor: url(/src/components/34.png), pointer;
-    height: 50px;
-    width: 100px;
-    background-color: lightgrey;
-    border: 1px solid lightgrey;
-    border-radius:20px;
     margin-bottom: 10px;
-    color: black;
-    font-size: 14px;
-    font-weight: 500;
-    margin-left: 150px;
-}
-.imagepizza{
-    margin-top: 10px;
-}
+    }
+    .PizzaItemDescription{
+        font-size: 14px;
+        font-weight: 500;
+        color: gray;
+        text-align: left;
+        margin-left: 25px;
+        margin-right: 25px;
+        margin-bottom: 50px;
+    }
+    
+    .pizzaItemOuterContainer{
+        border-radius: 25px;
+        background-color: white;
+        padding: 8px;
+        text-align: center;
+        display: block;
+        justify-content: center;
+        align-items: center;
+        margin: auto;
+        width: 300px;
+        height: 380px;
+        margin: 20px;
+    }
+    .pizzaItemcontainer{
+        padding-top: 10px;
+    }
+    .PizzaItemButton{
+        cursor: url(/src/components/34.png), pointer;
+        height: 50px;
+        width: 100px;
+        background-color: lightgrey;
+        border: 1px solid lightgrey;
+        border-radius:20px;
+        margin-bottom: 10px;
+        color: black;
+        font-size: 14px;
+        font-weight: 500;
+        margin-left: 150px;
+    }
+    .imagepizza{
+        margin-top: 10px;
+    }

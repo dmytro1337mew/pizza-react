@@ -19,7 +19,7 @@ export const cartSlice = createSlice({
             state.cart=removeItem;
         },
         incrementQuantity:(state,action)=>{
-            const itemPresent = state.cart.filter((item) => item.id === action.payload.id);
+            const itemPresent = state.cart.find((item) => item.id === action.payload.id);
             itemPresent.quantity++;
         },
         decrementQuantity:(state,action)=>{

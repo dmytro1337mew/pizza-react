@@ -15,7 +15,7 @@ function Header() {
     <div className="header">
       <div className="headerLeft">
         <img
-          className="image" style={{ width: 120, height: 80 }}
+          className="image" onClick={() => navigate("/pizza-react")} style={{ width: 120, height: 80 }}
           src="https://i.imgur.com/ac8BcqB.png"
         />
       </div>
