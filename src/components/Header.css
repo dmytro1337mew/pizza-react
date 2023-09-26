@@ -23,5 +23,12 @@ border-radius:20px;
 margin-left: 100px;
 }
 .clickpointer{
+    position: relative;
+    display: block;
+    line-height: 20px;
+    transition: 1s;
     cursor: url(/src/components/34.png), pointer;
+}
+.clickpointer :hover{
+    transform: translateY(-5px);
 }
