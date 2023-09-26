@@ -1,4 +1,4 @@
-.app{
+.home{
     text-align: center;
     z-index: 1;
     width: 100%;
@@ -6,9 +6,8 @@
     top: 0;
     left: 0;
     cursor: url(/src/components/1222.png), auto;
-    cursor:  url(/src/components/cursor.png),pointer;
 }
-.app{
+.home{
     background-image: url(/src/components/123.png);
     display:flex;
     flex-direction: column;

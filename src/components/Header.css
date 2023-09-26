@@ -22,3 +22,6 @@ border-radius:20px;
 .image{
 margin-left: 100px;
 }
+.clickpointer{
+    cursor: url(/src/components/34.png), pointer;
+}
