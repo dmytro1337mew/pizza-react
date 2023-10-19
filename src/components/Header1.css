@@ -48,4 +48,11 @@ margin-left: 100px;
     .headerRighthome {
       display: none;
     }
+    .imagehome{
+      cursor: url(/src/components/34.png), pointer;
+  margin-left:40px;
+  }
+    .s123{
+margin-right: 40px;
+    }
 }

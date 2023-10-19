@@ -17,3 +17,11 @@ font-weight: 500;
 .probil{
     color: white;
 }
+@media (max-width: 768px) {
+    .leftmid{
+        display:none;
+    }
+    .rightmid {
+      display: none;
+    }
+}

@@ -1,6 +1,7 @@
 .cart{
     display: flex;
     flex: 1;
+    overflow-x: hidden;
 }
 .cartleft{
     overflow: scroll;

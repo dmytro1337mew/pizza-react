@@ -33,3 +33,18 @@ margin-left: 100px;
 .clickpointer :hover{
     transform: translateY(-5px);
 }
+@media (max-width: 768px) {
+    .headerRight {
+      display: none;
+    }
+    .image{
+      cursor: url(/src/components/34.png), pointer;
+  margin-left:40px;
+  }
+  .headerMid {
+    display: none;
+  }
+    .s123{
+margin-right: 40px;
+    }
+}

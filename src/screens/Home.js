@@ -4,6 +4,7 @@ import Header1 from '../components/Header1'
 import Body from '../components/Body'
 import Footer from '../components/Footer'
 import CardContainer from '../components/card/container'
+import { Hidden } from '@mui/material'
 function Home() {
   return (
     <div className='home'>

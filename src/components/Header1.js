@@ -15,7 +15,7 @@ function Header1() {
     <div className="headerhome">
       <div className="headerLefthome">
         <img
-          className="image" onClick={() => navigate("/pizza-react")} style={{ width: 120, height: 80 }}
+          className="imagehome" onClick={() => navigate("/pizza-react")} style={{ width: 120, height: 80 }}
           src="https://i.imgur.com/ac8BcqB.png"
         />
       </div>
@@ -29,7 +29,7 @@ function Header1() {
         <span style={{ color: "black", backgroungColor: "lightgrey", width: 12, height: 12, borderRadius: 6, textAlign: "center", position: "absolute", bottom: 14, left: 20, fontSize: 17, fontWeight: "600", }}>{cart.length}</span>
       </div>
       <div className="clickpointer" onClick={()=>navigate("/about")}>
-        <PetsOutlinedIcon />
+        <PetsOutlinedIcon className='s123'/>
       </div>
       <div className='headerRighthome'>
         <h4 className="headerTexthome">Djgut Team</h4>

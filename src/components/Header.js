@@ -29,7 +29,7 @@ function Header() {
         <span style={{ color: "black", backgroungColor: "lightgrey", width: 12, height: 12, borderRadius: 6, textAlign: "center", position: "absolute", bottom: 14, left: 20, fontSize: 17, fontWeight: "600", }}>{cart.length}</span>
       </div>
       <div className="clickpointer" onClick={()=>navigate("/about")}>
-        <PetsOutlinedIcon />
+        <PetsOutlinedIcon className='s123'/>
       </div>
       <div className='headerRight'>
         <h4 className="headerText">Djgut Team</h4>

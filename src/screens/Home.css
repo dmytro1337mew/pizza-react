@@ -6,6 +6,7 @@
     top: 0;
     left: 0;
     cursor: url(/src/components/1222.png), auto;
+    overflow-x: hidden;
 }
 .home{
     background-image: url(/src/components/123.png);
