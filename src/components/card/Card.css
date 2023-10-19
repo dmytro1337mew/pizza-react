@@ -81,7 +81,7 @@
 }
 
 input:checked + label {
-    width: 740px;
+    width: 770px;
 }
 
 input:checked + label .description {
@@ -90,7 +90,7 @@ input:checked + label .description {
 }
 
 .card[for="c1"] {
-    background-image: url(/src/components/155.png);
+    background-image: url(/src/components/56789.jpg);
 }
 .card[for="c2"] {
     background-image: url(/src/components/56789.png);
@@ -99,7 +99,7 @@ input:checked + label .description {
     background-image: url(/src/components/13371.png);
 }
 .card[for="c4"] {
-    background-image: url(/src/components/56789.jpg);
+    background-image: url(/src/components/155.png);
 }
 @media (max-width: 768px) {
     .wrapper{
