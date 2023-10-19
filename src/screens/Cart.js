@@ -18,7 +18,7 @@ function Cart() {
     dispatch(decrementQuantity(item))
   }
   const total = cart.map((item) => item.price * item.quantity).reduce((curr, prev) => curr + prev, 0);
-  const discount = 555;
+  const discount = 100;
   return (
     <div className='cart1'>
       <Header />

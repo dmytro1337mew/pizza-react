@@ -33,3 +33,19 @@ margin-left: 100px;
 .clickpointer :hover{
     transform: translateY(-5px);
 }
+.headerMidhome {
+    display: block;
+  }
+  @media (max-width: 768px) {
+    .headerMidhome {
+      display: none;
+    }
+}
+.headerRighthome {
+    display: block;
+  }
+  @media (max-width: 768px) {
+    .headerRighthome {
+      display: none;
+    }
+}
