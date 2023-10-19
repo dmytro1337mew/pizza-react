@@ -6,6 +6,8 @@ import { decrementQuantity, incrementQuantity } from '../redux/CartSlice';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import Footer from '../components/Footer';
+import AddLocationIcon from '@mui/icons-material/AddLocation';
+import LoginIcon from '@mui/icons-material/Login';
 function Cart() {
   const cart = useSelector((state) => state.cart.cart);
   const dispatch = useDispatch();
@@ -15,8 +17,10 @@ function Cart() {
   const decreaseQuantity = (item) => {
     dispatch(decrementQuantity(item))
   }
+  const total = cart.map((item) => item.price * item.quantity).reduce((curr, prev) => curr + prev, 0);
+  const discount = 555;
   return (
-    <>
+    <div className='cart1'>
       <Header />
       <div className='cart'>
         {/* left */}
@@ -54,11 +58,72 @@ function Cart() {
         </div>
         {/* right */}
         <div className='cartright'>
-          <h3>right</h3>
+          <h3 className='cartrighttext'>Заповніть дані доставки:</h3>
+          <div className='cartTop'>
+            <AddLocationIcon style={{ color: "gray", fontSize: 22 }} />
+            <div className='CartRightDesc'>
+              <h4 style={{marginBottom:"10px"}}>Оберіть адресу</h4>
+              <div>
+                <h5 style={{marginBottom:"7px"}}>Місто: </h5>
+                
+                <input
+                type="text"
+              /></div>
+              <div>
+                <h5 style={{marginBottom:"7px"}}>Вулиця: </h5>
+                <input
+                type="text"
+              /></div>
+              <div>
+                <h5 style={{marginBottom:"7px"}}>Номер будинку\квартири: </h5>
+                <input
+                type="text"
+              /></div>
+              <button style={{ color: "#ffb54f", borderWidth: 0.7, borderColor: "#ffb54f", cursor: "pointer", marginTop: 7, borderRadius: 4, padding: 4 }}>Підтвердити адресу</button>
+            </div>
+          </div>
+
+          <div className='cartTop'>
+            <LoginIcon style={{ color: "gray", fontSize: 22 }} />
+            <div className='CartRightDesc'>
+              <h4 style={{marginBottom:"10px"}}>Авторизуйтесь, щоб зберегти дані про доставку</h4>
+              <div>
+                <h5 style={{marginBottom:"7px"}}>Login: </h5>
+                <input
+                type="text"
+              /></div>
+              <div>
+                <h5 style={{marginBottom:"7px"}}>Password: </h5>
+                <input
+                type="text"
+              /></div>
+              <button style={{ color: "#ffb54f", borderWidth: 0.7, borderColor: "#ffb54f", cursor: "pointer", marginTop: 7, borderRadius: 4, padding: 4 }}>Увійти</button>
+            </div>
+          </div>
+
+
+          <h3 className='cartrighttext'>Ваше замовлення</h3>
+
+
+          <div>
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginTop: 5 }}>
+              <h4 style={{ fontSize: 15, fontWeight: "500" }}>Сума замовлення:</h4>
+              <h4 style={{ fontSize: 15, fontWeight: "500" }}>{total}</h4>
+            </div>
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginTop: 5 }}>
+              <h4 style={{ fontSize: 15, fontWeight: "500" }}>Знижка</h4>
+              <h4 style={{ fontSize: 15, fontWeight: "500" }}>{discount}</h4>
+            </div>
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginTop: 5 }}>
+              <h4 style={{ fontSize: 15, fontWeight: "bold" }}>До оплати:</h4>
+              <h4 style={{ fontSize: 15, fontWeight: "600" }}>{total - discount}</h4>
+            </div>
+          </div>
+          <button className='cartButtonRight'>Замовити</button>
         </div>
       </div>
-      {/* <Footer/> */}
-    </>
+      <Footer />
+    </div>
   )
 }
 

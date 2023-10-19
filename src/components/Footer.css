@@ -1,0 +1,19 @@
+.footer{
+background-color: white;
+padding: 8px;
+display: flex;
+align-items: center;
+justify-content: space-between;
+margin-top: 5px;
+
+}
+
+.socialmedia{
+    font-size: 14px;
+color: black;
+font-weight: 500;
+    margin-bottom: 10px;
+}
+.probil{
+    color: white;
+}

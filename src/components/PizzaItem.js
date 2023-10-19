@@ -21,7 +21,7 @@ function PizzaItem({ pizza }) {
           <h4 className="PizzaItemText">{pizza.name}</h4>
           <h4 className="PizzaItemDescription">{pizza.description.length > 100 ? pizza.description.substr(0, 30) + "..." : pizza.description}</h4>
           {cart.some((c) => c.id === pizza.id) ? (
-            <button onClick={() => removeItemFromCart(pizza)} className='PizzaItemButton'>Видалити з замовлення</button>
+            <button onClick={() => removeItemFromCart(pizza)} className='PizzaItemButton1'>Видалити з замовлення</button>
           ) : (
             <button onClick={() => addItemToCart(pizza)} className='PizzaItemButton'>Замовити</button>
           )}

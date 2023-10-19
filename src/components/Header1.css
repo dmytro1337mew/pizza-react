@@ -1,0 +1,35 @@
+.headerhome{
+border: 2px white;
+border-radius:20px;
+    background-color: white;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 5px;
+}
+.headerTexthome{
+    
+    font-size: 14px;
+    color: black;
+    font-weight: 500;
+}
+.headerRighthome{
+    margin-right: 100px;
+}
+.imagehome{
+    cursor: url(/src/components/34.png), pointer;
+margin-left: 100px;
+}
+.clickpointer{
+    position: relative;
+    display: block;
+    line-height: 20px;
+    transition: 1s;
+    cursor: url(/src/components/34.png), pointer;
+}
+.clickpointer :hover{
+    transform: translateY(-5px);
+}

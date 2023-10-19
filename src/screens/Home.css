@@ -9,8 +9,26 @@
 }
 .home{
     background-image: url(/src/components/123.png);
+    background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
     display:flex;
     flex-direction: column;
-    background-color: lightgrey;
+    background-color: #fff3dd;
     height: 100%;
+}
+.headerhome{
+    position: fixed;
+max-width: 1920px;
+width: 100%;
+border: 2px white;
+border-radius:20px;
+background-color: white;
+padding: 8px;
+display: flex;
+align-items: center;
+justify-content: space-between;
+margin-left: 5px;
+margin-right: 5px;
+margin-top: 5px;
 }

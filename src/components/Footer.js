@@ -1,39 +1,39 @@
 import React from 'react'
 import "./Footer.css"
-import ShoppingBagOutlinedIcon from '@mui/icons-material/ShoppingBagOutlined';
-import { Route, Link, useNavigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import { lightGreen } from '@mui/material/colors';
-import { Navigate } from "react-router-dom";
-import PetsOutlinedIcon from '@mui/icons-material/PetsOutlined';
 function Footer() {
-    const cart = useSelector((state) => state.cart.cart);
-  const navigate = useNavigate()
   return (
-    <div className="header">
-    <div className="headerLeft">
-      <img
-        className="image" onClick={() => navigate("/pizza-react")} style={{ width: 120, height: 80 }}
-        src="https://i.imgur.com/ac8BcqB.png"
-      />
+    <div className="footer">
+      <div className="footerleft">
+        <div><img className="paymentimage" style={{ width: 100, height: 35, marginBottom: "10px", marginLeft:"5px"}} src="https://d2z9uwnt8eubh7.cloudfront.net/media/default/0001/10/be6ea8ea5161dc9be3fa9eb4b2fa1fdea222cebc.png" /></div>
+        <div><img style={{width: 100, height: 30, marginBottom:"10px"}} src="https://yurincom.com/wp-content/uploads/2018/11/visa-logo-png-2026.png" /></div>
+        <div><img style={{width: 100, height: 30}} src="https://monobankinfo.com.ua/wp-content/uploads/logo.png" /></div>
+      </div>
+      <div className='leftmid'>
+        <h5>До кожного замовлення корм улюбленцю</h5>
+      </div>
+      <div className="footerMid">
+      <img style={{ width: 200, height: 100, }} src="https://i.imgur.com/VOuzNuI.png"/>
+      </div>
+      <div style={{ width:210 }}className='rightmid'>
+        <h5>Зробити замовлення:</h5>
+        <h5 className='probil'>s</h5>
+        <h5>+380991122333</h5>
+      </div>
+      <div className='footerRight'>
+        <h5 className='socialmedia'>Ми в соц. мережах:</h5>
+        <div className='socialmediaimage'>
+        <a href="https://www.instagram.com" target="_blank">
+          <img style={{ width: 30, height: 30, }} src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Instagram_logo_2016.svg/768px-Instagram_logo_2016.svg.png" />
+          </a>
+          <a href="https://www.telegram.org" target="_blank">
+          <img style={{ width: 30, height: 30, marginLeft: 10 }} src="https://cdn-icons-png.flaticon.com/512/906/906377.png" />
+          </a>
+          <a href="https://www.facebook.com" target="_blank">
+          <img style={{ width: 30, height: 30, marginLeft: 10 }} src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Facebook_Logo_%282019%29.png/1200px-Facebook_Logo_%282019%29.png" />
+</a>        
+        </div>
+      </div>
     </div>
-    <div className="headerMid">
-      <h3 className="headerText">Lviv Cat Pizzeria</h3>
-      <h3 className="headerText">Place with love to cats</h3>
-    </div>
-
-    <div className="clickpointer" onClick={() => navigate("/cart")} style={{ position: "relative",}}>
-      <ShoppingBagOutlinedIcon style={{ color: "black" }} />
-      <span style={{ color: "black", backgroungColor: "lightgrey", width: 12, height: 12, borderRadius: 6, textAlign: "center", position: "absolute", bottom: 14, left: 20, fontSize: 17, fontWeight: "600", }}>{cart.length}</span>
-    </div>
-    <div className="clickpointer" onClick={()=>navigate("/about")}>
-      <PetsOutlinedIcon />
-    </div>
-    <div className='headerRight'>
-      <h4 className="headerText">Djgut Team</h4>
-      <h4 className="headerText">+380666666666</h4>
-    </div>
-  </div>
   )
 }
 
