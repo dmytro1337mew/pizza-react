@@ -1,58 +1,69 @@
-.headerhome{
-border: 2px white;
-border-radius:20px;
-    background-color: white;
-    padding: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-left: 5px;
-    margin-right: 5px;
-    margin-top: 5px;
+.headerhome {
+  border: 2px white;
+  border-radius: 20px;
+  background-color: white;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-top: 5px;
 }
-.headerTexthome{
-    
-    font-size: 14px;
-    color: black;
-    font-weight: 500;
+
+.headerTexthome {
+
+  font-size: 14px;
+  color: black;
+  font-weight: 500;
 }
-.headerRighthome{
-    margin-right: 100px;
-}
-.imagehome{
-    cursor: url(/src/components/34.png), pointer;
-margin-left: 100px;
-}
-.clickpointer{
-    position: relative;
-    display: block;
-    line-height: 20px;
-    transition: 1s;
-    cursor: url(/src/components/34.png), pointer;
-}
-.clickpointer :hover{
-    transform: translateY(-5px);
-}
-.headerMidhome {
-    display: block;
-  }
-  @media (max-width: 768px) {
-    .headerMidhome {
-      display: none;
-    }
-}
+
 .headerRighthome {
-    display: block;
+  margin-right: 100px;
+}
+
+.imagehome {
+  cursor: url(/src/components/34.png), pointer;
+  margin-left: 100px;
+}
+
+.clickpointer {
+  position: relative;
+  display: block;
+  line-height: 20px;
+  transition: 1s;
+  cursor: url(/src/components/34.png), pointer;
+}
+
+.clickpointer :hover {
+  transform: translateY(-5px);
+}
+
+.headerMidhome {
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .headerMidhome {
+    display: none;
   }
-  @media (max-width: 768px) {
-    .headerRighthome {
-      display: none;
-    }
-    .imagehome{
-      cursor: url(/src/components/34.png), pointer;
-  margin-left:40px;
+}
+
+.headerRighthome {
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .headerRighthome {
+    display: none;
   }
-    .s123{
-margin-right: 40px;
-    }
+
+  .imagehome {
+    cursor: url(/src/components/34.png), pointer;
+    margin-left: 40px;
+  }
+
+  .s123 {
+    margin-right: 40px;
+  }
 }

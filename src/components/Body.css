@@ -8,3 +8,15 @@
     display: flex;
     flex-wrap: wrap;
 }
+@media (max-width: 1024px) {
+    .body{
+        margin-left: 60px;
+    margin-right: 60px;
+    }
+}
+@media (max-width: 768px) {
+    .body{
+        margin-left: 10px;
+    margin-right: 10px;
+    }
+}

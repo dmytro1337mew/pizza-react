@@ -33,6 +33,15 @@ margin-top: 5px;
 right: 0;
 left: 0;
 }
+@media (max-width: 1024px) {
+    .home{
+        background-repeat: repeat;
+        background-size: contain;
+    }
+    .headerhome {
+        position: static;
+    }
+}
 @media (max-width: 768px) {
     .headerhome {
         position: static;

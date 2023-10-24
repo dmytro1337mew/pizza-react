@@ -84,3 +84,10 @@ background-image: url(/src/components/123.png);
     padding:8px;
 cursor:pointer;
 }
+@media (max-width: 768px) {
+    .cart{
+        display: flex;
+        flex-direction: column;
+    flex: 1;
+    }
+}

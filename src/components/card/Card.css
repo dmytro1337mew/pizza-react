@@ -93,7 +93,7 @@ input:checked + label .description {
     background-image: url(/src/components/56789.jpg);
 }
 .card[for="c2"] {
-    background-image: url(/src/components/56789.png);
+    background-image: url(https://i.imgur.com/xfVrVu2.png);
 }
 .card[for="c3"] {
     background-image: url(/src/components/13371.png);
@@ -104,5 +104,10 @@ input:checked + label .description {
 @media (max-width: 768px) {
     .wrapper{
         display: none;
+    }
+}
+@media (max-width: 1024px){
+    .card {
+        width: 50px;
     }
 }
