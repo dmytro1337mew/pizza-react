@@ -6,6 +6,7 @@ import store from './store';
 import Home from './screens/Home';
 import Cart from './screens/Cart';
 import About from './screens/About';
+import Loginpage from './screens/Loginpage';
 import {
   BrowserRouter,
   Routes,
@@ -22,6 +23,7 @@ function App() {
   <Route path="/pizza-react" element={<Home/>}/>
   <Route path="/cart" element ={<Cart/>}/>
   <Route path="/about" element ={<About/>}/>
+  <Route path="/login" element ={<Loginpage/>}/>
 </Routes>
       </Provider>
       </BrowserRouter>

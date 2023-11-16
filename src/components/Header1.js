@@ -6,6 +6,7 @@ import { useSelector } from 'react-redux';
 import { lightGreen } from '@mui/material/colors';
 import { Navigate } from "react-router-dom";
 import PetsOutlinedIcon from '@mui/icons-material/PetsOutlined';
+import LoginIcon from '@mui/icons-material/Login';
 
 
 function Header1() {
@@ -31,6 +32,7 @@ function Header1() {
       <div className="clickpointer" onClick={()=>navigate("/about")}>
         <PetsOutlinedIcon className='s123'/>
       </div>
+      <div className="clickpointer" onClick={()=>navigate("/login")}><LoginIcon/></div>
       <div className='headerRighthome'>
         <h4 className="headerTexthome">Djgut Team</h4>
         <h4 className="headerTexthome">+380666666666</h4>

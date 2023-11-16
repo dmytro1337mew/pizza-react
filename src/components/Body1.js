@@ -1,24 +1,20 @@
 import React from 'react'
-import "./Body.css"
-import pizza from '../data/pizza'
-import PizzaItem from './PizzaItem';
+import "./Body1.css"
 import { useSelector } from 'react-redux';
 import DrinkItem from './DrinkItem';
 import drink from'../data/drink'
 
-function Body() {
+function Body1() {
   const data1 = drink;
-  const data = pizza;
   const cart = useSelector((state) => state.cart.cart);
   console.log(cart)
   return (
-    <div className='body'>
-      {data.map((item, index) => (
-        <PizzaItem pizza={item} key={index} />
+    <div className='body1'>
+      {data1.map((item, index) => (
+        <DrinkItem drink={item} key={index} />
       ))}
-
     </div>
   )
 }
 
-export default Body
+export default Body1
