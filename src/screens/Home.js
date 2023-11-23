@@ -9,7 +9,7 @@ import { Hidden } from '@mui/material'
 import Body1 from '../components/Body1'
 function Home() {
     const [isBodyVisible, setIsBodyVisible] = useState(true);
-    const [isBodyVisible1, setIsBodyVisible1] = useState(false);
+    const [isBodyVisible1, setIsBodyVisible1] = useState(true);
   
     const hideBody = () => {
       setIsBodyVisible(false);
