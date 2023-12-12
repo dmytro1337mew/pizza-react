@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import React from 'react';
 import "./Header1.css";
 import ShoppingBagOutlinedIcon from '@mui/icons-material/ShoppingBagOutlined';
@@ -7,9 +8,31 @@ import { lightGreen } from '@mui/material/colors';
 import { Navigate } from "react-router-dom";
 import PetsOutlinedIcon from '@mui/icons-material/PetsOutlined';
 import LoginIcon from '@mui/icons-material/Login';
+import SignUp from './login/SignUp';
+import SignIn from './login/SignIn';
+import ClearIcon from '@mui/icons-material/Clear';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 
 function Header1() {
+
+  const [isModalOpen1, setIsModalOpen1] = useState(false);
+  const openModal1 = () => {
+    setIsModalOpen1(true);
+  };
+  
+  const closeModal1 = () => {
+    setIsModalOpen1(false);
+  };
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+  
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
   const cart = useSelector((state) => state.cart.cart);
   const navigate = useNavigate()
   return (
@@ -32,7 +55,34 @@ function Header1() {
       <div className="clickpointer" onClick={()=>navigate("/about")}>
         <PetsOutlinedIcon className='s123'/>
       </div>
-      <div className="clickpointer" onClick={()=>navigate("/login")}><LoginIcon/></div>
+      <div className="clickpointer" onClick={openModal}><LoginIcon/></div>
+      {isModalOpen && (
+      <div className="modal-overlay">
+        <div className="modal">
+          <div className='ClearIcon'>
+        <ClearIcon onClick={closeModal}/>
+        </div>
+          <SignUp/>
+        </div>
+        <div className='Circle'>
+        <AccountCircleIcon onClick={()=>{ closeModal();openModal1();}}/>
+        </div>
+      </div>
+    )}
+
+{isModalOpen1 && (
+      <div className="modal-overlay">
+        <div className="modal">
+          <div className='ClearIcon'>
+        <ClearIcon onClick={closeModal1}/>
+        </div>
+          <SignIn/>
+        </div>
+        <div className='Circle'>
+        <AccountCircleIcon onClick={()=>{ closeModal1();openModal();}}/>
+        </div>
+      </div>
+    )}
       <div className='headerRighthome'>
         <h4 className="headerTexthome">Djgut Team</h4>
         <h4 className="headerTexthome">+380666666666</h4>

@@ -10,7 +10,6 @@ import Body1 from '../components/Body1'
 function Home() {
     const [isBodyVisible, setIsBodyVisible] = useState(true);
     const [isBodyVisible1, setIsBodyVisible1] = useState(true);
-  
     const hideBody = () => {
       setIsBodyVisible(false);
       setIsBodyVisible1(true);
@@ -33,6 +32,7 @@ function Home() {
       <button className='pepega1' onClick={hideBody}>Drinks</button>
       <button className='pepega2' onClick={showBody}>Pizza</button>
       </div>
+      
       <CardContainer />
       {isBodyVisible && <Body />}
       {isBodyVisible1 &&<Body1 />}

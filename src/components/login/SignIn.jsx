@@ -1,61 +1,108 @@
-import React, {useEffect, useState} from 'react'
-import { auth } from './firebase';
-import { signInWithEmailAndPassword } from 'firebase/auth';
-import "./SignIn.css"
+import { useRef, useState, useEffect, useContext } from 'react';
+import AuthContext from "./AuthProvider";
 import axios from 'axios';
-const apichanger="https://2f61-93-171-247-144.ngrok-free.app/"
-const src="https://content.guardianapis.com/search?page=2&q=debate&api-key=test"
-const SignIn = () => {
-  const [articles, setArticles]= useState([]);
-  useEffect(()=>{
-    axios
-    .get(src)
-    .then(data=>{
-      setArticles(data.data.response.results);
-    })
-  },[]);
-  // const [email, setEmail]=useState('');
-  // const [password, setPassword]=useState('');
-  const handleSubmit = () => {
+const LOGIN_URL = 'https://httpbin.org/post';
 
-    const axiosInstance = axios.create();
-    axiosInstance.post("https://httpbin.org/post", {
-      // email,
-      // password,
-    })
-      .then((response) => {
-       console.log(response)
-      })
-      .catch((error) => {
-        
-      });
-  };
-  // const signIn=(e)=>{
-  //  e.preventDefault();
-  //  signInWithEmailAndPassword(auth,email,password)
-  //  .then((userCredential)=>{
-  //   console.log(userCredential);
-  //  }).catch((error) => {
-  //   // Display a custom dialog for invalid login
-  //   window.alert('Invalid login or password');
-  //   console.error(error);
-  // });
-  // }
-  return (
-    <div className='signincontainter'>
-      {articles.map(article=>{
-        return(
-          <p>{article.webTitle}</p>
-        )
-      })}
-      {/* <form onSubmit={signIn}> */}
-        {/* <h1 className="createlogo">Log In to your account</h1>
-        <input className='emailinput' type="email" placeholder="Enter your email" value={email} onChange={(event) => setEmail(event.target.value)}></input>
-        <input className='passwordinput' type="password" placeholder="Enter your password" value={password} onChange={(event)=>setPassword(event.target.value)}></input>
-        <button onClick={handleSubmit} type='submit'>Log In</button> */}
-      {/* </form> */}
-    </div>
-  )
+const Login = () => {
+    const { setAuth } = useContext(AuthContext);
+    const userRef = useRef();
+    const errRef = useRef();
+
+    const [email, setEmail] = useState('');
+    const [pwd, setPwd] = useState('');
+    const [errMsg, setErrMsg] = useState('');
+    const [success, setSuccess] = useState(false);
+
+    useEffect(() => {
+        userRef.current.focus();
+    }, [])
+
+    useEffect(() => {
+        setErrMsg('');
+    }, [email, pwd])
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        try {
+            const response = await axios.post(LOGIN_URL,
+                { email, pwd },
+                {
+                    headers: { 'Content-Type': 'application/json' },
+                    withCredentials: true
+                }
+            );
+            console.log(response?.data);
+      console.log(response?.accessToken);
+      console.log(JSON.stringify(response))
+            console.log(JSON.stringify(response?.data));
+            //console.log(JSON.stringify(response));
+            const accessToken = response?.data?.accessToken;
+            setAuth({ email, pwd, accessToken });
+            setEmail('');
+            setPwd('');
+            setSuccess(true);
+        } catch (err) {
+            if (!err?.response) {
+                setErrMsg('No Server Response');
+            } else if (err.response?.status === 400) {
+                setErrMsg('Missing Username or Password');
+            } else if (err.response?.status === 401) {
+                setErrMsg('Unauthorized');
+            } else {
+                setErrMsg('Login Failed');
+            }
+            errRef.current.focus();
+        }
+    }
+
+    return (
+        <div className='SignInbody'>
+            {success ? (
+                <div>
+                    <h1>Ви увійшли!</h1>
+                    <br />
+                    <p>
+                        <a href="#">Продовжити роботу</a>
+                    </p>
+                </div>
+            ) : (
+                <div>
+                    <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
+                    <h1>Увійти</h1>
+                    <form className='SignInForm' onSubmit={handleSubmit}>
+                        <label htmlFor="email">Пошта:</label>
+                        <input
+                            type="email"
+                            id="email"
+                            ref={userRef}
+                            autoComplete="off"
+                            onChange={(e) => setEmail(e.target.value)}
+                            value={email}
+                            required
+                        />
+
+                        <label htmlFor="password">Пароль:</label>
+                        <input
+                            type="password"
+                            id="password"
+                            onChange={(e) => setPwd(e.target.value)}
+                            value={pwd}
+                            required
+                        />
+                        <button className='SignUpbutton'>Увійти</button>
+                    </form>
+                    <p>
+                        Ще не зареєструвались?<br />
+                        <span className="line">
+                            {/*put router link here*/}
+                            <a href="#">Зареєструватись</a>
+                        </span>
+                    </p>
+                </div>
+            )}
+        </div>
+    )
 }
 
-export default SignIn
+export default Login
