@@ -3,6 +3,8 @@ import "./About.css"
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 function About() {
+    const accessToken = localStorage.getItem('accessToken');
+const refreshToken = localStorage.getItem('refreshToken');
     return (
         <div className='about22'>
             <Header/>

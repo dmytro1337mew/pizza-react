@@ -18,7 +18,7 @@ function PizzaItem({ pizza }) {
       <div className="pizzaItemOuterContainer">
         <img className="imagepizza" style={{ width: 150, height: 150 }} src={pizza.image} />
         <div className="pizzaItemcontainer">
-          <h4 className="PizzaItemText">{pizza.name}</h4>
+          <h4 className="PizzaItemText">{pizza.productName}</h4>
           <h4 className="PizzaItemDescription">{pizza.description.length > 100 ? pizza.description.substr(0, 30) + "..." : pizza.description}</h4>
           <div className='under'>
           <h4 className='pizzaprice'>{pizza.price}₴</h4>

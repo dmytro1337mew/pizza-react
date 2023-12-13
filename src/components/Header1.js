@@ -39,7 +39,7 @@ function Header1() {
     <div className="headerhome">
       <div className="headerLefthome">
         <img
-          className="imagehome" onClick={() => navigate("/pizza-react")} style={{ width: 120, height: 80 }}
+          className="imagehome" onClick={() => navigate("/main")} style={{ width: 120, height: 80 }}
           src="https://i.imgur.com/ac8BcqB.png"
         />
       </div>
@@ -62,11 +62,8 @@ function Header1() {
           <div className='ClearIcon'>
         <ClearIcon onClick={closeModal}/>
         </div>
-          <SignUp/>
-        </div>
-        <div className='Circle'>
-        <AccountCircleIcon onClick={()=>{ closeModal();openModal1();}}/>
-        </div>
+          <SignIn closeModal={closeModal} openModal={openModal1}/>
+      </div>
       </div>
     )}
 
@@ -76,10 +73,7 @@ function Header1() {
           <div className='ClearIcon'>
         <ClearIcon onClick={closeModal1}/>
         </div>
-          <SignIn/>
-        </div>
-        <div className='Circle'>
-        <AccountCircleIcon onClick={()=>{ closeModal1();openModal();}}/>
+        <SignUp closeModal={closeModal1} openModal={openModal} />
         </div>
       </div>
     )}

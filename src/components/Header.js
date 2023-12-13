@@ -1,5 +1,6 @@
 import React from 'react';
 import "./Header.css";
+import { useState } from 'react';
 import ShoppingBagOutlinedIcon from '@mui/icons-material/ShoppingBagOutlined';
 import { Route, Link, useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
@@ -7,16 +8,37 @@ import { lightGreen } from '@mui/material/colors';
 import { Navigate } from "react-router-dom";
 import PetsOutlinedIcon from '@mui/icons-material/PetsOutlined';
 import LoginIcon from '@mui/icons-material/Login';
+import SignUp from './login/SignUp';
+import SignIn from './login/SignIn';
+import ClearIcon from '@mui/icons-material/Clear';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 
 function Header() {
+  const [isModalOpen1, setIsModalOpen1] = useState(false);
+  const openModal1 = () => {
+    setIsModalOpen1(true);
+  };
+  
+  const closeModal1 = () => {
+    setIsModalOpen1(false);
+  };
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+  
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
   const cart = useSelector((state) => state.cart.cart);
   const navigate = useNavigate()
   return (
     <div className="header">
       <div className="headerLeft">
         <img
-          className="image" onClick={() => navigate("/pizza-react")} style={{ width: 120, height: 80 }}
+          className="image" onClick={() => navigate("/main")} style={{ width: 120, height: 80 }}
           src="https://i.imgur.com/ac8BcqB.png"
         />
       </div>
@@ -32,7 +54,34 @@ function Header() {
       <div className="clickpointer" onClick={()=>navigate("/about")}>
         <PetsOutlinedIcon className='s123'/>
       </div>
-      <div className="clickpointer" onClick={()=>navigate("/login")}><LoginIcon/></div>
+      <div className="clickpointer" onClick={openModal}><LoginIcon/></div>
+      {isModalOpen && (
+      <div className="modal-overlay">
+        <div className="modal">
+          <div className='ClearIcon'>
+        <ClearIcon onClick={closeModal}/>
+        </div>
+        <SignIn closeModal={closeModal} openModal={openModal1}/>
+        </div>
+        <div className='Circle'>
+        <AccountCircleIcon onClick={()=>{ closeModal();openModal1();}}/>
+        </div>
+      </div>
+    )}
+
+{isModalOpen1 && (
+      <div className="modal-overlay">
+        <div className="modal">
+          <div className='ClearIcon'>
+        <ClearIcon onClick={closeModal1}/>
+        </div>
+        <SignUp closeModal={closeModal1} openModal={openModal} />
+        </div>
+        <div className='Circle'>
+        <AccountCircleIcon onClick={()=>{ closeModal1();openModal();}}/>
+        </div>
+      </div>
+    )}
       <div className='headerRight'>
         <h4 className="headerText">Djgut Team</h4>
         <h4 className="headerText">+380666666666</h4>

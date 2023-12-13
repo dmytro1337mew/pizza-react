@@ -7,12 +7,16 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./SignUp.css"
 import ClearIcon from '@mui/icons-material/Clear';
 
-const REGISTER_URL ='https://httpbin.org/post';
-const EMAIL_REGEX = /^[A-z][A-z0-9-_@.]{8,40}$/;
-const USER_REGEX = /^[А-яіїєІЇЄ][А-яієїІЄЇ]{3,23}$/;
-const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{5,50}$/;
-const SignUp = () => {
 
+const REGISTER_URL ='https://6638-91-218-105-250.ngrok-free.app/api/User/SignUp';
+const EMAIL_REGEX = /^[A-z][A-z0-9-_@.]{8,40}$/;
+const USER_REGEX = /^[A-z][A-z]{3,23}$/;
+const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{5,50}$/;
+const SignUp = ({ closeModal, openModal }) => {
+
+
+
+    
   const userRef = useRef();
   const errRef = useRef();
 
@@ -68,11 +72,8 @@ const handleSubmit = async (e) => {
   }
   try {
       const response = await axios.post(REGISTER_URL,
-             { name, email, password },
-          {
-              headers: { 'Content-Type': 'application/json' },
-              withCredentials: true
-          }
+            { name, email, password },
+
       );
       console.log(response?.data);
       console.log(response?.accessToken);
@@ -208,7 +209,7 @@ const handleSubmit = async (e) => {
                     Вже зареєстровані?<br />
                     <span className="line">
                         {/*put router link here*/}
-                        <a href="#">Увійти</a>
+                        <h6 onClick={() => { closeModal(); openModal(); }}><u>Увійти</u></h6>
                     </span>
                 </p>
            </div>

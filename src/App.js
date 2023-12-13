@@ -6,7 +6,9 @@ import store from './store';
 import Home from './screens/Home';
 import Cart from './screens/Cart';
 import About from './screens/About';
-import Loginpage from './screens/Loginpage';
+import EmailPage from './screens/EmailPage';
+import LoadingScreen from './screens/LoadingScreen';
+import { useHistory } from 'react-router-dom';
 import {
   BrowserRouter,
   Routes,
@@ -20,10 +22,11 @@ function App() {
       <BrowserRouter>
       <Provider store={store}>
 <Routes>
-  <Route path="/pizza-react" element={<Home/>}/>
+<Route path="/" element={<LoadingScreen/>} />
+  <Route path="/main" element={<Home/>}/>
   <Route path="/cart" element ={<Cart/>}/>
+  <Route path="/email" element ={<EmailPage/>}/>
   <Route path="/about" element ={<About/>}/>
-  <Route path="/login" element ={<Loginpage/>}/>
 </Routes>
       </Provider>
       </BrowserRouter>

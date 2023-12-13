@@ -21,6 +21,8 @@
 .headerhome{
     height: 70px;
     position: fixed;
+    top: 0;
+    z-index: 3;
 width: auto;
 border: 2px white;
 border-radius:20px;
@@ -85,7 +87,9 @@ left: 0;
     /* Колір кнопки при наведенні */
 }
 .navigateitems{
+    position: relative;
     margin-top: 120px;
+    
 }
 @media (max-width: 1024px) {
     .navigateitems{
@@ -106,4 +110,13 @@ left: 0;
 }
 .drinkslabel{
     margin-top: 45px;
+}
+.but1{
+    padding: 25px;
+}
+.but2{
+    padding: 25px;
+}
+.but3{
+    padding: 25px;
 }

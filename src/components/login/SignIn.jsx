@@ -1,15 +1,15 @@
-import { useRef, useState, useEffect, useContext } from 'react';
-import AuthContext from "./AuthProvider";
+import { useRef, useState, useEffect } from 'react';
+import useAuth from '../hooks/useAuth';
 import axios from 'axios';
-const LOGIN_URL = 'https://httpbin.org/post';
+const LOGIN_URL = 'https://368f-93-171-247-144.ngrok-free.app/api/User/Login';
 
-const Login = () => {
-    const { setAuth } = useContext(AuthContext);
+const Login = ({ closeModal, openModal }) => {
+    const { setAuth , auth} = useAuth();
     const userRef = useRef();
     const errRef = useRef();
 
     const [email, setEmail] = useState('');
-    const [pwd, setPwd] = useState('');
+    const [password, setPassword] = useState('');
     const [errMsg, setErrMsg] = useState('');
     const [success, setSuccess] = useState(false);
 
@@ -19,28 +19,43 @@ const Login = () => {
 
     useEffect(() => {
         setErrMsg('');
-    }, [email, pwd])
+    }, [email, password])
+
+    useEffect(() => {
+        // Перевірка наявності токенів в localStorage
+        const storedEmail = localStorage.getItem('email');
+        const storedAccessToken = localStorage.getItem('accessToken');
+
+        if ( storedEmail && storedAccessToken) {
+            setSuccess(true);
+        }
+    }, []);
+
+    const handleSuccessfulLogin = (accessToken, refreshToken, email) => {
+        // Збереження токенів у localStorage
+        localStorage.setItem('accessToken', accessToken);
+        localStorage.setItem('email', email);
+        localStorage.setItem('refreshToken', refreshToken);
+    }
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
         try {
             const response = await axios.post(LOGIN_URL,
-                { email, pwd },
-                {
-                    headers: { 'Content-Type': 'application/json' },
-                    withCredentials: true
-                }
+                { email, password },
             );
             console.log(response?.data);
       console.log(response?.accessToken);
       console.log(JSON.stringify(response))
             console.log(JSON.stringify(response?.data));
             //console.log(JSON.stringify(response));
-            const accessToken = response?.data?.accessToken;
-            setAuth({ email, pwd, accessToken });
+            const accessToken = response?.data?.token;
+            const refreshToken = response?.data?.refreshToken;
+            handleSuccessfulLogin(accessToken, refreshToken, email);
+            setAuth({ email, accessToken, refreshToken });
             setEmail('');
-            setPwd('');
+            setPassword('');
             setSuccess(true);
         } catch (err) {
             if (!err?.response) {
@@ -60,18 +75,15 @@ const Login = () => {
         <div className='SignInbody'>
             {success ? (
                 <div>
-                    <h1>Ви увійшли!</h1>
+                    <h1>Ви вже увійшли! Ваша пошта: {localStorage.getItem('email')}</h1>
                     <br />
-                    <p>
-                        <a href="#">Продовжити роботу</a>
-                    </p>
                 </div>
             ) : (
                 <div>
                     <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
                     <h1>Увійти</h1>
                     <form className='SignInForm' onSubmit={handleSubmit}>
-                        <label htmlFor="email">Пошта:</label>
+                        <label htmlFor="email">Пошта:{auth.accessToken}</label>
                         <input
                             type="email"
                             id="email"
@@ -86,8 +98,8 @@ const Login = () => {
                         <input
                             type="password"
                             id="password"
-                            onChange={(e) => setPwd(e.target.value)}
-                            value={pwd}
+                            onChange={(e) => setPassword(e.target.value)}
+                            value={password}
                             required
                         />
                         <button className='SignUpbutton'>Увійти</button>
@@ -96,7 +108,8 @@ const Login = () => {
                         Ще не зареєструвались?<br />
                         <span className="line">
                             {/*put router link here*/}
-                            <a href="#">Зареєструватись</a>
+                            <h6 onClick={() => { closeModal(); openModal(); }}><u>Зареєструватись</u></h6>
+                            
                         </span>
                     </p>
                 </div>
