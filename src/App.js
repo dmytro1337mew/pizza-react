@@ -22,7 +22,7 @@ function App() {
       <BrowserRouter>
       <Provider store={store}>
 <Routes>
-<Route path="/" element={<LoadingScreen/>} />
+<Route path="/pizza-react" element={<LoadingScreen/>} />
   <Route path="/main" element={<Home/>}/>
   <Route path="/cart" element ={<Cart/>}/>
   <Route path="/email" element ={<EmailPage/>}/>
