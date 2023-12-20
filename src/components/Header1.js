@@ -34,10 +34,11 @@ function Header1() {
   const handleLogout = async () => {
     try {
       // Виклик POST-запиту
-      const response = await axios.post('User/Logout/', {
+      const response = await axios.get('User/Logout', {
         withCredentials: true,
         baseURL: URL,
         headers: {
+          Authorization: `Bearer ${userToken}`,
           "Content-Type": "application/json",
         },
       });

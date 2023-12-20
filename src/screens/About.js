@@ -9,7 +9,7 @@ function About() {
     const [data, setData] = useState([]);
     const accessToken = localStorage.getItem('accessToken');
     const refreshToken = localStorage.getItem('refreshToken');
-    const USER_URL = '/User/Profile';
+    const USER_URL = '/User/GetUser';
     useEffect(() => {
         axios.get(USER_URL, {
             withCredentials: true,
