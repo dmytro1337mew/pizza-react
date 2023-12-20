@@ -10,7 +10,7 @@ const LoadingScreen = ({ history }) => {
     const timeout = setTimeout(() => {
       setVisible(false);
       navigate('/main'); // Use navigate instead of history.push
-    }, 5000);
+    }, 2500);
 
     return () => clearTimeout(timeout);
   }, [history]);

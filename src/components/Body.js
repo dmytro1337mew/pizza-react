@@ -12,7 +12,7 @@ function Body() {
   const [data, setData] = useState([]);
   
   useEffect(() => {
-    axios.get('https://adf3-91-218-105-250.ngrok-free.app/api/Product/getProducts', {
+    axios.get('Product/getProducts', {
       headers: {
         'ngrok-skip-browser-warning': 'true',
         // Other headers if needed

@@ -92,3 +92,6 @@ cursor:pointer;
     flex: 1;
     }
 }
+.cartright > .SignInbody{
+    background-color: #ffffff;
+}

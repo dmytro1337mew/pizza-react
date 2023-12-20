@@ -1,7 +1,7 @@
 import { useRef, useState, useEffect } from 'react';
 import useAuth from '../hooks/useAuth';
 import axios from 'axios';
-const LOGIN_URL = 'https://368f-93-171-247-144.ngrok-free.app/api/User/Login';
+const LOGIN_URL = 'User/Login';
 
 const Login = ({ closeModal, openModal }) => {
     const { setAuth , auth} = useAuth();
@@ -26,7 +26,7 @@ const Login = ({ closeModal, openModal }) => {
         const storedEmail = localStorage.getItem('email');
         const storedAccessToken = localStorage.getItem('accessToken');
 
-        if ( storedEmail && storedAccessToken) {
+        if ( storedAccessToken) {
             setSuccess(true);
         }
     }, []);

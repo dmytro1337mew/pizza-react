@@ -35,8 +35,10 @@
     align-items: center;
 }
 .image1{
-margin-left: 20px;
-margin-top: 15px;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+  object-fit: cover; 
 }
 .header1{
     margin-left: 20px;
@@ -55,4 +57,27 @@ margin-top: 15px;
     display:flex;
     align-items: center;
     justify-content:space-around;
+}
+.user-profile{
+    
+    width: 40%;
+    height: 460px;
+    background: linear-gradient(#e6a954, #d1a553,#ebbf82 );
+    
+    margin: 7px 5px;
+    padding: 20px;
+    color: #000000;
+    /* border: 6px solid rgb(113, 22, 42); */
+    border-radius: 40px;
+    font-family: "Times New Roman", Times, serif;
+    font-size: 20px;
+    text-align: center;
+    margin-top: 20px;
+    margin-left: 28%;
+    margin-bottom: 75px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+    
+}
+.user-profile > .SignInbody{
+    background-color: rgba(0, 0, 0, 0);
 }

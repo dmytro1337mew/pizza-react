@@ -9,6 +9,9 @@ import About from './screens/About';
 import EmailPage from './screens/EmailPage';
 import LoadingScreen from './screens/LoadingScreen';
 import { useHistory } from 'react-router-dom';
+import baseURL from "./components/login/api/axios";
+import axios from 'axios';
+import { subscribeTokenRefresh, onRefreshed } from './components/login/interseptor';
 import {
   BrowserRouter,
   Routes,
@@ -17,6 +20,7 @@ import {
 } from "react-router-dom";
 
 function App() {
+  
   return (
     <div className="app">
       <BrowserRouter>

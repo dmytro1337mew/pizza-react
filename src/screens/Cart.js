@@ -10,14 +10,16 @@ import AddLocationIcon from '@mui/icons-material/AddLocation';
 import LoginIcon from '@mui/icons-material/Login';
 import SignIn from '../components/login/SignIn';
 import axios from 'axios';
+
 import { useState } from 'react';
 function Cart() {
+  const [order, setOrder] = useState([]);
   const [deliveryMethod, setDeliveryMethod] = useState('selfPickup'); // Default to self-pickup
   const sendOrder = async (editedArray, userToken) => {
     try {
       // Ваш код для відправки на сервер
       console.log('Sending data:', editedArray);
-      const response = await axios.post('https://368f-93-171-247-144.ngrok-free.app/api/Order/Create', editedArray, {
+      const response = await axios.post('Order/Create', editedArray, {
         headers: {
           Authorization: `Bearer ${userToken}`,
         },
@@ -113,48 +115,7 @@ const refreshToken = localStorage.getItem('refreshToken');
     Доставка
   </label>
 </div>
-          {/* <h3 className='cartrighttext'>Заповніть дані доставки:</h3>
-          <div className='cartTop'>
-            <AddLocationIcon style={{ color: "gray", fontSize: 22 }} />
-            <div className='CartRightDesc'>
-              <h4 style={{marginBottom:"10px"}}>Оберіть адресу</h4>
-              <div>
-                <h5 style={{marginBottom:"7px"}}>Місто: </h5>
-                
-                <input
-                type="text"
-              /></div>
-              <div>
-                <h5 style={{marginBottom:"7px"}}>Вулиця: </h5>
-                <input
-                type="text"
-              /></div>
-              <div>
-                <h5 style={{marginBottom:"7px"}}>Номер будинку\квартири: </h5>
-                <input
-                type="text"
-              /></div>
-              <button style={{ color: "#ffb54f", borderWidth: 0.7, borderColor: "#ffb54f", cursor: "pointer", marginTop: 7, borderRadius: 4, padding: 4 }}>Підтвердити адресу</button>
-            </div>
-          </div> */}
-
-          {/* <div className='cartTop'>
-            <LoginIcon style={{ color: "gray", fontSize: 22 }} />
-            <div className='CartRightDesc'>
-              <h4 style={{marginBottom:"10px"}}>Авторизуйтесь, щоб зберегти дані про доставку</h4>
-              <div>
-                <h5 style={{marginBottom:"7px"}}>Login: </h5>
-                <input
-                type="text"
-              /></div>
-              <div>
-                <h5 style={{marginBottom:"7px"}}>Password: </h5>
-                <input
-                type="text"
-              /></div>
-              <button style={{ color: "#ffb54f", borderWidth: 0.7, borderColor: "#ffb54f", cursor: "pointer", marginTop: 7, borderRadius: 4, padding: 4 }}>Увійти</button>
-            </div>
-          </div> */}
+          
 
 
           <h3 className='cartrighttext'>Ваше замовлення</h3>

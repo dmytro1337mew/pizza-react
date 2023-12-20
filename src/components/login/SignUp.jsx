@@ -2,13 +2,13 @@ import React, {useState, useEffect, useRef} from 'react'
 import { Margin } from '@mui/icons-material';
 import "./SignIn.css"
 import axios from 'axios';
+import baseURL from "./api/axios";
 import { faCheck, faTimes, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./SignUp.css"
 import ClearIcon from '@mui/icons-material/Clear';
 
-
-const REGISTER_URL ='https://6638-91-218-105-250.ngrok-free.app/api/User/SignUp';
+const REGISTER_URL ='User/SignUp';
 const EMAIL_REGEX = /^[A-z][A-z0-9-_@.]{8,40}$/;
 const USER_REGEX = /^[A-z][A-z]{3,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{5,50}$/;

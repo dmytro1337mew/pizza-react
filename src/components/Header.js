@@ -12,9 +12,20 @@ import SignUp from './login/SignUp';
 import SignIn from './login/SignIn';
 import ClearIcon from '@mui/icons-material/Clear';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import { useEffect } from 'react';
+import LogoutIcon from '@mui/icons-material/Logout';
+import axios from 'axios';
 
 
 function Header() {
+  useEffect(() => {
+    // Перевірка наявності токенів в localStorage
+    const storedEmail = localStorage.getItem('email');
+    const storedAccessToken = localStorage.getItem('accessToken');
+
+    if ( storedEmail && storedAccessToken) {
+    }
+}, []);
   const [isModalOpen1, setIsModalOpen1] = useState(false);
   const openModal1 = () => {
     setIsModalOpen1(true);
@@ -29,11 +40,40 @@ function Header() {
     setIsModalOpen(true);
   };
   
+  const handleLogout = async () => {
+    try {
+      // Виклик POST-запиту
+      const response = await axios.post('User/Logout/', {
+        withCredentials: true,
+        baseURL: URL,
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+  
+      // Якщо POST-запит виконано успішно, видаляємо кукіс
+      localStorage.removeItem('email');
+      localStorage.removeItem('accessToken');
+      localStorage.removeItem('refreshToken');
+      // Якщо є додаткова логіка для виходу, додайте її тут
+  
+      // Перенаправлення користувача на головну сторінку або іншу, де потрібно
+      navigate('/main');
+      console.log(response);
+    } catch (error) {
+      // Обробка помилок при POST-запиті
+      console.error('Помилка при виході з системи:', error);
+    }
+  };
+
   const closeModal = () => {
     setIsModalOpen(false);
   };
   const cart = useSelector((state) => state.cart.cart);
   const navigate = useNavigate()
+
+
+  
   return (
     <div className="header">
       <div className="headerLeft">
@@ -54,7 +94,14 @@ function Header() {
       <div className="clickpointer" onClick={()=>navigate("/about")}>
         <PetsOutlinedIcon className='s123'/>
       </div>
-      <div className="clickpointer" onClick={openModal}><LoginIcon/></div>
+      { localStorage.getItem('accessToken') ? (
+      <div className="clickpointer" onClick={handleLogout}><button style={{ backgroundColor: '#808080', borderRadius: '10px', padding: '10px 20px', border: 'none', cursor: 'pointer' }}><h5>Вийти</h5><LogoutIcon/></button></div>
+      ):(<div className="clickpointer" onClick={openModal}>
+      <button style={{ backgroundColor: '#ff9f1c', borderRadius: '10px', padding: '10px 20px', border: 'none', cursor: 'pointer' }}>
+        <strong style={{ marginBottom: 'px', color: '#fff' }}>Увійти</strong>
+        
+      </button>
+    </div>)}
       {isModalOpen && (
       <div className="modal-overlay">
         <div className="modal">
