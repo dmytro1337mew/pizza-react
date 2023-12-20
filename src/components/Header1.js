@@ -27,6 +27,9 @@ function Header1() {
     setIsModalOpen1(false);
   };
 
+  const accessToken = localStorage.getItem('accessToken');
+  const refreshToken = localStorage.getItem('refreshToken');
+
   const [isModalOpen, setIsModalOpen] = useState(false);
   const openModal = () => {
     setIsModalOpen(true);
@@ -38,7 +41,7 @@ function Header1() {
         withCredentials: true,
         baseURL: URL,
         headers: {
-          Authorization: `Bearer ${userToken}`,
+          Authorization: `Bearer ${accessToken}`,
           "Content-Type": "application/json",
         },
       });

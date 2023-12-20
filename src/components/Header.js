@@ -40,6 +40,9 @@ function Header() {
     setIsModalOpen(true);
   };
   
+  const accessToken = localStorage.getItem('accessToken');
+  const refreshToken = localStorage.getItem('refreshToken');
+
   const handleLogout = async () => {
     try {
       // Виклик POST-запиту
@@ -47,7 +50,7 @@ function Header() {
         withCredentials: true,
         baseURL: URL,
         headers: {
-          Authorization: `Bearer ${userToken}`,
+          Authorization: `Bearer ${accessToken}`,
           "Content-Type": "application/json",
         },
       });
