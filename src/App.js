@@ -18,6 +18,8 @@ import {
   Route,
   Link,
 } from "react-router-dom";
+import AdminPage from './screens/AdminPage';
+import Order from './screens/Order';
 
 function App() {
   
@@ -27,10 +29,12 @@ function App() {
       <Provider store={store}>
 <Routes>
 <Route path="/pizza-react" element={<LoadingScreen/>} />
+<Route path="/adminpage" element={<AdminPage/>}/>
   <Route path="/main" element={<Home/>}/>
   <Route path="/cart" element ={<Cart/>}/>
   <Route path="/email" element ={<EmailPage/>}/>
   <Route path="/about" element ={<About/>}/>
+  <Route path="/orders" element ={<Order/>}/>
 </Routes>
       </Provider>
       </BrowserRouter>

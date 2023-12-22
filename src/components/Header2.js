@@ -15,9 +15,28 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { useEffect } from 'react';
 import LogoutIcon from '@mui/icons-material/Logout';
 import axios from 'axios';
+import InventoryIcon from '@mui/icons-material/Inventory';
+import jwt_decode from 'jwt-decode';
+import { jwtDecode } from 'jwt-decode';
 
 
 function Header() {
+  const [userRole, setUserRole] = useState(null);
+  useEffect(() => {
+    // Роздекодування та перевірка ролі адміна
+    const storedAccessToken = localStorage.getItem('accessToken');
+
+    if (storedAccessToken) {
+      const decodedToken = jwtDecode(storedAccessToken);
+      const role = decodedToken.role;
+      setUserRole(role);
+
+      // Якщо у користувача є роль адміна, ви можете додати відповідний функціонал
+      if (role === 'Admin') {
+        // Ваш код для користувача з роллю адміна
+      }
+    }
+  }, []);
   useEffect(() => {
     // Перевірка наявності токенів в localStorage
     const storedEmail = localStorage.getItem('email');
@@ -90,47 +109,16 @@ function Header() {
         <h3 className="headerText">Place with love to cats</h3>
       </div>
 
-      <div className="clickpointer" onClick={() => navigate("/cart")} style={{ position: "relative", }}>
+      {/* <div className="clickpointer" onClick={() => navigate("/cart")} style={{ position: "relative", }}>
         <ShoppingBagOutlinedIcon style={{ color: "black" }} />
         <span style={{ color: "black", backgroungColor: "lightgrey", width: 12, height: 12, borderRadius: 6, textAlign: "center", position: "absolute", bottom: 14, left: 20, fontSize: 17, fontWeight: "600", }}>{cart.length}</span>
+      </div> */}
+      
+<div className="clickpointer" onClick={()=>navigate("/orders")}>
+        <InventoryIcon className='s123'/>
       </div>
-      <div className="clickpointer" onClick={() => navigate("/about")}>
-        <PetsOutlinedIcon className='s123' />
-      </div>
-      {localStorage.getItem('accessToken') ? (
-        <div className="clickpointer" onClick={handleLogout}><button style={{ backgroundColor: '#808080', borderRadius: '10px', padding: '10px 20px', border: 'none', cursor: 'pointer' }}><h5>Вийти</h5><LogoutIcon /></button></div>
-      ) : (<div className="clickpointer" onClick={openModal}>
-        <button style={{ backgroundColor: '#ff9f1c', borderRadius: '10px', padding: '10px 20px', border: 'none', cursor: 'pointer' }}>
-          <strong style={{ marginBottom: 'px', color: '#fff' }}>Увійти</strong>
-
-        </button>
-      </div>)}
-      {isModalOpen && (
-        <div className="modal-overlay">
-          <div className="modal">
-            <div className='ClearIcon'>
-              <ClearIcon onClick={closeModal} />
-            </div>
-            <SignIn closeModal={closeModal} openModal={openModal1} />
-          </div>
-          <div className='Circle'>
-            <AccountCircleIcon onClick={() => { closeModal(); openModal1(); }} />
-          </div>
-        </div>
-      )}
-
-      {isModalOpen1 && (
-        <div className="modal-overlay">
-          <div className="modal">
-            <div className='ClearIcon'>
-              <ClearIcon onClick={closeModal1} />
-            </div>
-            <SignUp closeModal={closeModal1} openModal={openModal} />
-          </div>
-          <div className='Circle'>
-            <AccountCircleIcon onClick={() => { closeModal1(); openModal(); }} />
-          </div>
-        </div>
+      {userRole === 'Admin' && (
+        <button onClick={() => console.log('Ви адмін!')}>Адмін</button>
       )}
       <div className='headerRight'>
         <h4 className="headerText">Djgut Team</h4>

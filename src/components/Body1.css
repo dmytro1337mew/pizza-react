@@ -9,14 +9,21 @@
     flex-wrap: wrap;
 }
 @media (max-width: 1024px) {
-    .body{
+    .body1{
         margin-left: 60px;
     margin-right: 60px;
     }
 }
 @media (max-width: 768px) {
-    .body{
+    .body1{
         margin-left: 10px;
     margin-right: 10px;
     }
 }
+/* @media (max-width: 320px) {
+    .body1{
+        margin-left:0px;
+    margin-right: 0px;
+    }
+} */
+

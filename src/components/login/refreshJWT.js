@@ -1,8 +1,10 @@
 import axios from "axios";
 
-const updateAccessToken = async (refreshToken) => {
+const updateAccessToken = async () => {
+  const token = localStorage.getItem('accessToken');
+  const refreshToken = localStorage.getItem('refreshToken');
   try {
-    const response = await axios.post('User/RefreshToken', { refreshToken }, { withCredentials: true });
+    const response = await axios.post('User/RefreshToken', { token, refreshToken });
 
     if (response.status === 200) {
       const newAccessToken = response.data.token;

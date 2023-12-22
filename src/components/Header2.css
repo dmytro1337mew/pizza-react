@@ -95,8 +95,3 @@
     cursor: url(/src/components/34.png), pointer;
     margin-left: 240px;
 }
-@media (max-width:320px) {
-  .headerLefthome{
-  display: none;
-}
-}

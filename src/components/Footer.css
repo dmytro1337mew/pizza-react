@@ -27,3 +27,17 @@ font-weight: 500;
       display: none;
     }
 }
+@media (max-width: 410px) {
+    .socialmediaimage{
+        display: none;
+    }
+.socialmedia{
+    display: none;
+}
+.footerleft{
+    display: none;
+}
+.footer{
+    justify-content: center;
+}
+}

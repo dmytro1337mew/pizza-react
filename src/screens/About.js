@@ -12,11 +12,9 @@ function About() {
     const USER_URL = '/User/GetUser';
     useEffect(() => {
         axios.get(USER_URL, {
-            withCredentials: true,
-            baseURL: URL,
+            
             headers: {
                 Authorization: `Bearer ${accessToken}`,
-                "Content-Type": "application/json",
             },
         })
             .then(response => {

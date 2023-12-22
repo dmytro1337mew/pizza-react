@@ -83,7 +83,7 @@ const Login = ({ closeModal, openModal }) => {
                     <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
                     <h1>Увійти</h1>
                     <form className='SignInForm' onSubmit={handleSubmit}>
-                        <label htmlFor="email">Пошта:{auth.accessToken}</label>
+                        <label htmlFor="email">Пошта:{''}</label>
                         <input
                             type="email"
                             id="email"

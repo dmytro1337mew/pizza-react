@@ -12,7 +12,7 @@ function Body() {
   const [data, setData] = useState([]);
   
   useEffect(() => {
-    axios.get('Product/getProducts', {
+    axios.get('admin/Product/getProducts', {
       headers: {
         'ngrok-skip-browser-warning': 'true',
         // Other headers if needed
@@ -29,9 +29,24 @@ function Body() {
   }, []);
   const cart = useSelector((state) => state.cart.cart);
   console.log(cart)
+
+
+  
+  // Сортування масиву перед відображенням
+  const sortedData = [...data].sort((a, b) => {
+    // Порівнюємо типи продуктів ('pizza' або 'drink')
+    if (a.type === 'pizza' && b.type === 'drink') {
+      return -1; // Піци ідуть першими
+    } else if (a.type === 'drink' && b.type === 'pizza') {
+      return 1; // Напої йдуть після піц
+    } else {
+      return 0; // Залишаємо порядок незмінним, якщо типи однакові
+    }
+  });
+  
   return (
     <div className='body'>
-      {data.map((item, index) => (
+      {sortedData.map((item, index) => (
         <PizzaItem pizza={item} key={index} />
       ))}
 

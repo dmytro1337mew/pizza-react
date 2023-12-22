@@ -14,9 +14,28 @@ import ClearIcon from '@mui/icons-material/Clear';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import LogoutIcon from '@mui/icons-material/Logout';
 import axios from 'axios';
+import jwt_decode from 'jwt-decode';
+import { jwtDecode } from 'jwt-decode';
+import { useEffect } from 'react';
 
 
 function Header1() {
+  const [userRole, setUserRole] = useState(null);
+  useEffect(() => {
+    // Роздекодування та перевірка ролі адміна
+    const storedAccessToken = localStorage.getItem('accessToken');
+
+    if (storedAccessToken) {
+      const decodedToken = jwtDecode(storedAccessToken);
+      const role = decodedToken.Role;
+      setUserRole(role);
+
+      // Якщо у користувача є роль адміна, ви можете додати відповідний функціонал
+      if (role === 'Admin') {
+        // Ваш код для користувача з роллю адміна
+      }
+    }
+  }, []);
 
   const [isModalOpen1, setIsModalOpen1] = useState(false);
   const openModal1 = () => {
@@ -38,11 +57,10 @@ function Header1() {
     try {
       // Виклик POST-запиту
       const response = await axios.get('User/Logout', {
-        withCredentials: true,
-        baseURL: URL,
+        
         headers: {
           Authorization: `Bearer ${accessToken}`,
-          "Content-Type": "application/json",
+          
         },
       });
   
@@ -114,6 +132,9 @@ function Header1() {
         </div>
       </div>
     )}
+     {userRole === 'Admin' && (
+        <button onClick={() => navigate('/adminpage')}>Адмін</button>
+      )}
       <div className='headerRighthome'>
         <h4 className="headerTexthome">Djgut Team</h4>
         <h4 className="headerTexthome">+380666666666</h4>
