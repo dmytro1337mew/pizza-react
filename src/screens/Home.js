@@ -88,7 +88,7 @@ function Home() {
       
       <CardContainer />
       {isBodyVisible && <Body />}
-      {/* {isBodyVisible1 &&<Body1 />} */}
+      {isBodyVisible1 &&<Body1 />}
       <Footer />
     </div>
   )
